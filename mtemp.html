@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BUILD TO LEARN</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    h1 {
+      background-color: GoldenRod;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 90px;
+    }
+
+    .container {
+      width: 400px;
+      height: 400px;
+      background-color: aliceblue;
+    }
+
+    .textC {
+      padding: 10px;
+      overflow-y: scroll;
+    }
+
+    form {
+      width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 20px auto;
+      border: 1px solid rgb(0, 0, 59);
+    }
+
+    form div {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      outline: none;
+    }
+
+    .buttons {
+      display: flex;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      background-color: rgb(195, 0, 255);
+      border-top: 1px solid rgb(0, 0, 59);
+    }
+
+    input[type="submit"] {
+      border-right: 1px solid rgb(0, 0, 59);
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      background-color: rgb(217, 237, 255);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+    }
+
+    .imgC {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .imgC p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .imgC img {
+      max-width: 400px;
+      max-height: 400px;
+      z-index: 99;
+    }
+  </style>
+  <body>
+    <h1>Image to text</h1>
+    <form method="POST">
+      <div>
+        <input
+          id="url"
+          type="text"
+          name="text"
+          placeholder="Enter  Url for image"
+          onchange="imageLoad()"
+          oninput="imageLoad()"
+          required
+        />
+      </div>
+      <div class="buttons">
+        <input type="submit" />
+        <input type="reset" />
+      </div>
+    </form>
+
+    <div class="wrapper">
+      <div class="container imgC">
+        <p>No image available</p>
+        <img src="{{url}}" alt="" id="preview" />
+      </div>
+      <div class="container textC">{{li}}</div>
+    </div>
+    <script>
+      function imageLoad() {
+        var url = document.getElementById("url").value;
+        document.getElementById("preview").src = url;
+      }
+    </script>
+  </body>
+</html>
